@@ -42,4 +42,6 @@ def convert_stats(**kwargs):
             value2 = value2[0]+'.'+value2[1]+value2[2]+'K'
         elif value2 < 1000:
             value2 = round(value2, 2)
+        else:
+            value2 = 'Это что за число у тебя такое???'
     return str(value2)

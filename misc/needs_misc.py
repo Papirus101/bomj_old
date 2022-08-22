@@ -4,7 +4,6 @@ from db.queries.users import update_user_balance
 from misc.convert_money import convert_stats
 from misc.services import scheduler, redis
 
-from aiogram import types
 import pathlib
 import random
 
@@ -45,12 +44,13 @@ async def create_event_delivery_fuel(message, count_product_delivery, business_t
     arrow = Image.open(f'{pathlib.Path().absolute()}/image/race/{arrows.get(event_id)}.png')
     event.paste(arrow, (350, 51), arrow)
     event.save(f'{pathlib.Path().absolute()}/image/race/{message.from_user.id}_event.png')
-    if event_id == 3:
-        text = 'Поворачивай направо!'
-    elif event_id == 4:
-        text = 'Поворачивай налево!'
-    elif event_id == 5:
-        text = "Газуй прямо!"
+    match event_id:
+        case 3:
+            text = 'Поворачивай направо!'
+        case 4:
+            text = 'Поворачивай налево!'
+        case 5:
+            text = 'Газуй прямо!'
     await message.answer_photo(
         open(f'{pathlib.Path().absolute()}/image/race/{message.from_user.id}_event.png', 'rb'),
         caption=f'{text}\n'
