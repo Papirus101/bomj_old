@@ -15,9 +15,10 @@ async def send_all_users_message(message: types.Message):
     for user in users:
         try:
             await message.bot.send_message(chat_id=user.telegram_id, text=message.text.replace('/send', ''))
+            await asyncio.sleep(1)
         except:
             pass
-        await asyncio.sleep(1)
+        
 
 
 async def my_profile(message: types.Message):

@@ -85,7 +85,7 @@ async def get_id(message: types.Message):
 
 
 async def other(message: types.Message):
-    await message.answer('В разработке... ( нужны картинки машинок) )')
+    await message.answer('В разработке...')
 
 
 def register_start_handler(dp: Dispatcher):
